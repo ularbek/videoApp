@@ -2,27 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Video Upload</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<h1>Upload Video</h1>
-<form method="post" enctype="multipart/form-data" action="/upload">
-    <input type="file" name="file" required><br>
-    <input type="text" name="title" placeholder="Title" required><br>
-    <button type="submit">Upload</button>
-</form>
+<div class="container-fluid">
+    <h1>Upload Video</h1>
+    <form method="post" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="file" required><br>
+        <input type="text" name="title" placeholder="Title" required><br>
+        <button type="submit">Upload</button>
+    </form>
 
-<div th:if="${error}" th:text="${error}" style="color: red;"></div>
-<div th:if="${message}" th:text="${message}" style="color: green;"></div>
+    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
+    <div th:if="${message}" th:text="${message}" style="color: green;"></div>
 
-<h2>Uploaded Videos</h2>
-<ul>
-    <li th:each="video : ${videos}">
-        <p th:text="${video.title}"></p>
-        <video width="320" height="240" controls>
-            <source th:src="@{'/video/' + ${video.fileName}}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </li>
-</ul>
+    <h2>Uploaded Videos</h2>
+    <ul>
+        <li th:each="video : ${videos}">
+            <p th:text="${video.title}"></p>
+            <video width="320" height="240" controls>
+                <source th:src="@{'/video/' + ${video.fileName}}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </li>
+    </ul>
+</div>
+
 </body>
 
