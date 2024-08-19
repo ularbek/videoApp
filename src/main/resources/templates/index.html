@@ -10,17 +10,22 @@
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div class="container-fluid">
-    <h1>Upload Video</h1>
-    <form method="post" enctype="multipart/form-data" action="/upload">
-        <input type="file" name="file" required><br>
-        <input type="text" name="title" placeholder="Title" required><br>
-        <button type="submit">Upload</button>
-    </form>
 
-    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
-    <div th:if="${message}" th:text="${message}" style="color: green;"></div>
-
+<div class="navbar navbar-expand navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand">Video App</a>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+            <!-- NAVBAR LINKS -->
+            <li class="nav-item">
+                <a class="nav-link active" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container mt-5">
     <h2>Uploaded Videos</h2>
     <ul>
         <li th:each="video : ${videos}">
@@ -31,6 +36,27 @@
             </video>
         </li>
     </ul>
+
+    <!-- Video Gallery -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

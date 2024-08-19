@@ -26,22 +26,6 @@ public class VideoController {
         return "index";
     }
 
-    @PostMapping("/upload")
-    public String uploadVideo(@RequestParam("file") MultipartFile file,
-                              @RequestParam("title") String title,
-                              RedirectAttributes redirectAttributes) {
-        try {
-            videoService.saveVideo(file, title);
-            redirectAttributes.addFlashAttribute("message", "Video uploaded successfully!");
-        } catch (IllegalArgumentException e) {
-            redirectAttributes.addFlashAttribute("error", e.getMessage());
-        } catch (IOException e) {
-            e.printStackTrace();
-            redirectAttributes.addFlashAttribute("error", "An error occurred during file upload.");
-        }
-        return "redirect:/";
-    }
-
     @GetMapping("/video/{fileName}")
     @ResponseBody
     public ResponseEntity<Resource> streamVideo(@PathVariable String fileName) {

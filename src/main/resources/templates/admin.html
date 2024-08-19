@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Video Upload</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Upload Video</h1>
+    <form method="post" enctype="multipart/form-data" action="/admin/upload">
+        <input type="file" name="file" required><br>
+        <input type="text" name="title" placeholder="Title" required><br>
+        <button type="submit">Upload</button>
+    </form>
+
+    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
+    <div th:if="${message}" th:text="${message}" style="color: green;"></div>
+
+</div>
+
+</body>
+
